@@ -47,15 +47,16 @@ function counter() {
    console.log(time);
     if(time===0){
         stop();
-        $('button').remove();
+        $('.answerButton').remove();
         $('.tempQuestionDiv').remove();
         questionCount++;
         showQuestion(questionCount);
         reset();
-    } else if(questionCount>5){
+    } if(questionCount>5){
         stop();
-        $('#timer').remove()
         $("#startButton").show();
+        $('#timer').remove()
+        
     }
 
  }
@@ -78,7 +79,7 @@ function showQuestion(questionCount){
         case 1:
             $('#questionContainer').append("<h1 class='tempQuestionDiv'>"+ questions.question1+ "</h1>");
             //Show Answers
-            $('#answerContainer').append("<button class='answerButton' value=1>" + answers.answer1[0]+"</button>");
+            $('#answerContainer').append("<button class='answerButton' 'value=1'>" + answers.answer1[0]+"</button>");
             $('#answerContainer').append("<button class='answerButton' value=0>" + answers.answer1[1]+"</button>");
             $('#answerContainer').append("<button class='answerButton' value=0>" + answers.answer1[2]+"</button>");
             $('#answerContainer').append("<button class='answerButton' value=0>" + answers.answer1[3]+"</button>");
@@ -139,7 +140,7 @@ function showQuestion(questionCount){
 };
 
 function checkAnswer(){
-    $('button').on('click', function(){
+    $('.answerButton').on('click', function(){
         var correctChoice = $(this).attr("value");
         console.log("the correct choice is"+correctChoice);
         clearInterval(intervalId);
@@ -147,7 +148,7 @@ function checkAnswer(){
 
         if(correctChoice==='1'){
             console.log("Correct");
-            $('button').remove();
+            $('.answerButton').remove();
             $('.tempQuestionDiv').remove();
             questionsCorrect++;
             $('#correctContainer2').remove();
@@ -155,7 +156,7 @@ function checkAnswer(){
                      
         }else{
             console.log("incorrect");
-            $('button').remove();
+            $('.answerButton').remove();
             $('.tempQuestionDiv').remove();            
         }
         
